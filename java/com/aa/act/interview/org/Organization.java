@@ -5,6 +5,7 @@ import java.util.Optional;
 public abstract class Organization {
 
 	private Position root;
+	private int identifier = 0;
 	
 	public Organization() {
 		root = createOrganization();
@@ -25,7 +26,8 @@ public abstract class Organization {
 
 		// Checks the result and returns an Optional<Employee> if one was found.
 		if (result != null) {
-			result.setEmployee(Optional.of(new Employee(0, person)));
+			result.setEmployee(Optional.of(new Employee(identifier, person)));
+			identifier++;
 			return Optional.of(result);
 		}
 
@@ -56,7 +58,7 @@ public abstract class Organization {
 		return null;
 	}
 
-	
+
 
 	@Override
 	public String toString() {
